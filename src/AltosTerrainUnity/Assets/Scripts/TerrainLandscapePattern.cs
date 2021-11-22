@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Terrain/Landscape", order = 1000)]
-public class TerrainLandscapePattern : ScriptableObject
+namespace AltosTerrain
 {
-	public TerrainLandscapeLayer[] Layers;
-
-	public float Sample(float time)
+	[CreateAssetMenu(menuName = "Terrain/Landscape", order = 1000)]
+	public class TerrainLandscapePattern : ScriptableObject
 	{
-		float value = 0.0f;
-		foreach (var layer in Layers)
+		public TerrainLandscapeLayer[] Layers;
+
+		public float Sample(float time)
 		{
-			value += layer.Sample(time);
+			float value = 0.0f;
+			foreach (var layer in Layers)
+			{
+				value += layer.Sample(time);
+			}
+			return value;
 		}
-		return value;
 	}
 }

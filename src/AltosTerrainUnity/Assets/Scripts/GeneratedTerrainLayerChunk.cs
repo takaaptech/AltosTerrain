@@ -1,19 +1,22 @@
 ﻿using System;
 
-[Serializable]
-public class GeneratedTerrainLayerChunk
+namespace AltosTerrain
 {
-	public float Offset;
-	public GeneratedTerrainNode[] Nodes;
-
-	public float Width => Nodes[^1].Position;
-
-	public float MaxX => Offset + Width;
-
-	public GeneratedTerrainLayer Layer { get; }
-
-	public GeneratedTerrainLayerChunk(GeneratedTerrainLayer layer)
+	[Serializable]
+	public class GeneratedTerrainLayerChunk
 	{
-		Layer = layer;
+		public float Offset;
+		public GeneratedTerrainNode[] Nodes;
+
+		public float Width => Nodes[^1].Position;
+
+		public float MaxX => Offset + Width;
+
+		public GeneratedTerrainLayer Layer { get; }
+
+		public GeneratedTerrainLayerChunk(GeneratedTerrainLayer layer)
+		{
+			Layer = layer;
+		}
 	}
 }

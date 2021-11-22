@@ -1,43 +1,46 @@
 using UnityEngine;
 
-public class GeneratedTerrainRenderer : MonoBehaviour
+namespace AltosTerrain
 {
-	public TerrainPattern TerrainPattern;
-	public GeneratedTerrainLayerRendererPrefabPool LayerRendererPrefab;
-
-	[Space]
-	public SpriteRenderer SkyboxGraphic;
-	public SpriteRenderer SunGlowGraphic;
-
-	public GeneratedTerrain GeneratedTerrain;
-
-	private void Start()
+	public class GeneratedTerrainRenderer : MonoBehaviour
 	{
-		RegenerateTerrain();
-	}
+		public TerrainPattern TerrainPattern;
+		public GeneratedTerrainLayerRendererPrefabPool LayerRendererPrefab;
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		[Space]
+		public SpriteRenderer SkyboxGraphic;
+		public SpriteRenderer SunGlowGraphic;
+
+		public GeneratedTerrain GeneratedTerrain;
+
+		private void Start()
 		{
 			RegenerateTerrain();
 		}
-	}
 
-	void RegenerateTerrain()
-	{
-		SkyboxGraphic.color = TerrainPattern.Biome.SkyColour;
-		SunGlowGraphic.color = TerrainPattern.Biome.SunColour;
-
-		LayerRendererPrefab.ReturnAll();
-
-		GeneratedTerrain = new GeneratedTerrain(TerrainPattern);
-
-		foreach (var layer in GeneratedTerrain.Layers)
+		private void Update()
 		{
-			var renderer = LayerRendererPrefab.Grab(transform);
+			if (Input.GetKeyDown(KeyCode.Space))
+			{
+				RegenerateTerrain();
+			}
+		}
 
-			renderer.Render(layer);
+		void RegenerateTerrain()
+		{
+			SkyboxGraphic.color = TerrainPattern.Biome.SkyColour;
+			SunGlowGraphic.color = TerrainPattern.Biome.SunColour;
+
+			LayerRendererPrefab.ReturnAll();
+
+			GeneratedTerrain = new GeneratedTerrain(TerrainPattern);
+
+			foreach (var layer in GeneratedTerrain.Layers)
+			{
+				var renderer = LayerRendererPrefab.Grab(transform);
+
+				renderer.Render(layer);
+			}
 		}
 	}
 }

@@ -1,45 +1,48 @@
 using UnityEngine;
 using UnityEngine.U2D;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour
+namespace AltosTerrain
 {
-	public ParticleSystem dustTrail;
-	public float passiveForce = 250.0f;
-	public float passiveVelocityTarget = 10.0f;
-
-	private Rigidbody2D playerRigidbody;
-
-	void Awake()
+	[RequireComponent(typeof(Rigidbody2D))]
+	public class PlayerController : MonoBehaviour
 	{
-		playerRigidbody = GetComponent<Rigidbody2D>();
-		dustTrail.Stop();
-	}
+		public ParticleSystem dustTrail;
+		public float passiveForce = 250.0f;
+		public float passiveVelocityTarget = 10.0f;
 
-	void FixedUpdate()
-	{
-		if (playerRigidbody.velocity.magnitude < passiveVelocityTarget)
+		private Rigidbody2D playerRigidbody;
+
+		void Awake()
 		{
-			playerRigidbody.AddForce(new Vector2(passiveForce, 0.0f));
+			playerRigidbody = GetComponent<Rigidbody2D>();
+			dustTrail.Stop();
 		}
-	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		dustTrail.Play();
-
-		if (collision.gameObject != null)
+		void FixedUpdate()
 		{
-			var spriteRenderer = collision.gameObject.GetComponent<SpriteShapeRenderer>();
-
-			var dustTrailRenderer = dustTrail.GetComponent<ParticleSystemRenderer>();
-
-			dustTrailRenderer.material = spriteRenderer.material;
+			if (playerRigidbody.velocity.magnitude < passiveVelocityTarget)
+			{
+				playerRigidbody.AddForce(new Vector2(passiveForce, 0.0f));
+			}
 		}
-	}
 
-	private void OnCollisionExit2D(Collision2D collision)
-	{
-		dustTrail.Stop();
+		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			dustTrail.Play();
+
+			if (collision.gameObject != null)
+			{
+				var spriteRenderer = collision.gameObject.GetComponent<SpriteShapeRenderer>();
+
+				var dustTrailRenderer = dustTrail.GetComponent<ParticleSystemRenderer>();
+
+				dustTrailRenderer.material = spriteRenderer.material;
+			}
+		}
+
+		private void OnCollisionExit2D(Collision2D collision)
+		{
+			dustTrail.Stop();
+		}
 	}
 }

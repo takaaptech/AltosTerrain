@@ -1,4 +1,7 @@
 ﻿using System;
 
-[Serializable]
-public class GeneratedTerrainLayerChunkRendererPrefabPool : PrefabPool<GeneratedTerrainLayerChunkRenderer> { }
+namespace AltosTerrain
+{
+	[Serializable]
+	public class GeneratedTerrainLayerChunkRendererPrefabPool : PrefabPool<GeneratedTerrainLayerChunkRenderer> { }
+}

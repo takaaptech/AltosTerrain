@@ -1,39 +1,40 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class TerrainLandscapeLayer
+namespace AltosTerrain
 {
-	public enum LayerPatternType
+	[Serializable]
+	public class TerrainLandscapeLayer
 	{
-		Uniform,
-		Perlin,
-		Descending
-	}
-
-	public LayerPatternType Type = LayerPatternType.Perlin;
-	public float Frequency = 0.025f;
-	public float Scale = 1.0f;
-
-	public float Sample(float time)
-	{
-		switch (Type)
+		public enum LayerPatternType
 		{
-			default:
-			case LayerPatternType.Uniform:
+			Uniform,
+			Perlin,
+			Descending
+		}
+
+		public LayerPatternType Type = LayerPatternType.Perlin;
+		public float Frequency = 0.025f;
+		public float Scale = 1.0f;
+
+		public float Sample(float time)
+		{
+			switch (Type)
 			{
-				return Scale;
-			}
-			case LayerPatternType.Perlin:
-			{
-				return Mathf.PerlinNoise(time * Frequency, 0.5f) * Scale;
-			}
-			case LayerPatternType.Descending:
-			{
-				return time * -Scale;
+				default:
+				case LayerPatternType.Uniform:
+				{
+					return Scale;
+				}
+				case LayerPatternType.Perlin:
+				{
+					return Mathf.PerlinNoise(time * Frequency, 0.5f) * Scale;
+				}
+				case LayerPatternType.Descending:
+				{
+					return time * -Scale;
+				}
 			}
 		}
 	}
 }
-
-

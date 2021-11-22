@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class RotateOverLifetime : MonoBehaviour
+namespace AltosTerrain
 {
-	public float rotationSpeed = 1.5f;
-
-	void Update()
+	public class RotateOverLifetime : MonoBehaviour
 	{
-		transform.Rotate(0.0f, 0.0f, rotationSpeed * Time.deltaTime);
+		public float rotationSpeed = 1.5f;
+
+		void Update()
+		{
+			transform.Rotate(0.0f, 0.0f, rotationSpeed * Time.deltaTime);
+		}
 	}
 }

@@ -1,20 +1,23 @@
 using System;
 using System.Collections.Generic;
 
-[Serializable]
-public class GeneratedTerrain
+namespace AltosTerrain
 {
-	public TerrainPattern TerrainPattern;
-	public List<GeneratedTerrainLayer> Layers = new();
-
-	public GeneratedTerrain(TerrainPattern terrainPattern)
+	[Serializable]
+	public class GeneratedTerrain
 	{
-		TerrainPattern = terrainPattern;
+		public TerrainPattern TerrainPattern;
+		public List<GeneratedTerrainLayer> Layers = new();
 
-		for (int i = 0; i < terrainPattern.Biome.Layers.Length; i++)
+		public GeneratedTerrain(TerrainPattern terrainPattern)
 		{
-			var layer = terrainPattern.Biome.Layers[i];
-			Layers.Add(new GeneratedTerrainLayer(layer, -i * 100));
+			TerrainPattern = terrainPattern;
+
+			for (int i = 0; i < terrainPattern.Biome.Layers.Length; i++)
+			{
+				var layer = terrainPattern.Biome.Layers[i];
+				Layers.Add(new GeneratedTerrainLayer(layer, -i * 100));
+			}
 		}
 	}
 }

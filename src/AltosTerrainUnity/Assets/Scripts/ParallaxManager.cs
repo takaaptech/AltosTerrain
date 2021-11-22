@@ -2,22 +2,25 @@ using Cinemachine;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(CinemachineBrain))]
-public class ParallaxManager : MonoBehaviour
+namespace AltosTerrain
 {
-	public static Action PostUpdateCallback;
-
-	private CinemachineBrain brain;
-
-	private void Awake()
+	[RequireComponent(typeof(CinemachineBrain))]
+	public class ParallaxManager : MonoBehaviour
 	{
-		brain = GetComponent<CinemachineBrain>();
-	}
+		public static Action PostUpdateCallback;
 
-	private void LateUpdate()
-	{
-		brain.ManualUpdate();
+		private CinemachineBrain brain;
 
-		PostUpdateCallback?.Invoke();
+		private void Awake()
+		{
+			brain = GetComponent<CinemachineBrain>();
+		}
+
+		private void LateUpdate()
+		{
+			brain.ManualUpdate();
+
+			PostUpdateCallback?.Invoke();
+		}
 	}
 }
