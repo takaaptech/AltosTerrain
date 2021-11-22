@@ -33,6 +33,7 @@ src/AltosTerrainUnity/[Ll]ibrary/
 src/AltosTerrainUnity/Assets/AssetStoreTools*
 src/AltosTerrainUnity/Assets/Winter/Animations/
 src/AltosTerrainUnity/Logs
+src/AltosTerrainUnity/Recordings
 
 ConfigSession.asset
 ConfigSession.asset.meta
