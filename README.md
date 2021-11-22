@@ -1,5 +1,7 @@
 # Procedural 2D Terrain
 
+[![Unity Version: 2021.2.3f1](https://img.shields.io/badge/Unity-2021.2.3f1-333333.svg?logo=unity)](https://unity3d.com/get-unity/download/archive) [![Status: Viable](https://img.shields.io/badge/Development%20Log-2b83e0)](https://github.com/Fydar/AltosTerrain/issues/17)
+
 Procedurally generated, 2D side-scrolling terrain using splines.
 
 <p align="center">
